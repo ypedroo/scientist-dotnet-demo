@@ -10,6 +10,7 @@ namespace scientist_demo
             var repository = new AtendeeRepository();
             var smtpGateway = new SmtpEmailGateway();
             var cloudGateway = new CloudEmailServiceGateway();
+            var alternateCloudGateway = new AlternativeCloudEmailService();
             Scientist.ResultPublisher = new ConsolePublisher();
 
             var atendeesToNotify = repository.GetAll();
@@ -23,6 +24,7 @@ namespace scientist_demo
                     experiment.Use(() => smtpGateway.IsValidEmail(atendee.Email));
 
                     experiment.Try("Cloud gateway", () => cloudGateway.ValidateEmailAddres(atendee.Email));
+                    experiment.Try("Alternative gateway", () => alternateCloudGateway.ValidateEmailAddres(atendee.Email));
                 });
 
                 if (isValidEmail)
