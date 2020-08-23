@@ -9,7 +9,7 @@ namespace scientist_demo
                 new Atendee("Pedro", "ynoa.pedro@outlook.com"),
                 new Atendee("Gesiel", "gesielchaves@gmail.com"),
                 new Atendee("Mateus", "mateussantosgmail.com"),
-                new Atendee("Caludio", "mateussantosgmail.net")
+                new Atendee("Caludio", "claudio@gmail.net")
             };
     }
 }
