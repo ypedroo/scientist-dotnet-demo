@@ -10,6 +10,7 @@ namespace scientist_demo
             var repository = new AtendeeRepository();
             var smtpGateway = new SmtpEmailGateway();
             var cloudGateway = new CloudEmailServiceGateway();
+            Scientist.ResultPublisher = new ConsolePublisher();
 
             var atendeesToNotify = repository.GetAll();
 
