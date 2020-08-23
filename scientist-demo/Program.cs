@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using GitHub;
 
 namespace scientist_demo
@@ -21,11 +22,16 @@ namespace scientist_demo
 
                 isValidEmail = Scientist.Science<bool>("Cloud-email-gatway", experiment =>
                 {
+                    experiment.BeforeRun(() => PreapreForExperiment(atendee));
+
                     experiment.Use(() => smtpGateway.IsValidEmail(atendee.Email));
 
+                    // Add context
                     experiment.AddContext("email address", atendee.Email);
 
-                    experiment.RunIf(() => atendee.FirstName == "Pedro");
+                    // Add condition to experiment
+                    //experiment.RunIf(() => atendee.FirstName == "Pedro" || atendee.FirstName == "Mateus");
+                    //experiment.Ignore((control, candidate) => atendee.FirstName == "Mateus");
 
                     experiment.Try("Cloud gateway", () => cloudGateway.ValidateEmailAddres(atendee.Email));
                     experiment.Try("Alternative gateway", () => alternateCloudGateway.ValidateEmailAddres(atendee.Email));
@@ -40,7 +46,14 @@ namespace scientist_demo
                     Console.WriteLine($"Cannot send mail to {atendee.FirstName}, the email addres is invalid");
                 }
             }
+            Console.ReadLine();
+        }
 
+        public static void PreapreForExperiment(Atendee atendee)
+        {
+            Console.WriteLine($"Preparing {atendee.FirstName} for experiment");
+
+            Thread.Sleep(5000);
         }
     }
 }
