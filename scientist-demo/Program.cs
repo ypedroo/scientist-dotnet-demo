@@ -23,6 +23,10 @@ namespace scientist_demo
                 {
                     experiment.Use(() => smtpGateway.IsValidEmail(atendee.Email));
 
+                    experiment.AddContext("email address", atendee.Email);
+
+                    experiment.RunIf(() => atendee.FirstName == "Pedro");
+
                     experiment.Try("Cloud gateway", () => cloudGateway.ValidateEmailAddres(atendee.Email));
                     experiment.Try("Alternative gateway", () => alternateCloudGateway.ValidateEmailAddres(atendee.Email));
                 });

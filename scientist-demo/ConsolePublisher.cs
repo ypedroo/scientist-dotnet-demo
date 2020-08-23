@@ -14,6 +14,11 @@ namespace scientist_demo
             Console.WriteLine($"Result: '{(result.Matched ? "Control value matched candidate value" : "Control value DIDN'T matched candidate value")}'");
             Console.WriteLine($"Control Value: '{result.Control.Value}'");
 
+            foreach (var context in result.Contexts)
+            {
+                Console.WriteLine($"{context.Key} = {context.Value}");
+            }
+
             foreach (var candidate in result.Candidates)
             {
                 Console.WriteLine($"Candidate name: {candidate.Name}");
