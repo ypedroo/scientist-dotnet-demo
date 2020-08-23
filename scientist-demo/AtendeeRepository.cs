@@ -2,7 +2,7 @@
 
 namespace scientist_demo
 {
-    public class AtendeeRepository
+    class AtendeeRepository
     {
         public List<Atendee> GetAll() => new List<Atendee>
             {

@@ -1,6 +1,6 @@
 ﻿namespace scientist_demo
 {
-    public class Atendee
+    class Atendee
     {
         public Atendee(string firstName, string email)
         {

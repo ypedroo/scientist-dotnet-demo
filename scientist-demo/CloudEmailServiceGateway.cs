@@ -3,7 +3,7 @@ using System.Threading;
 
 namespace scientist_demo
 {
-    public class CloudEmailServiceGateway
+    class CloudEmailServiceGateway
     {
         public bool ValidateEmailAddres(string emailAddress)
             => emailAddress.Contains(".com");

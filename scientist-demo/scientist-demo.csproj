@@ -6,4 +6,8 @@
     <RootNamespace>scientist_demo</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="scientist" Version="2.0.0" />
+  </ItemGroup>
+
 </Project>

@@ -3,7 +3,7 @@ using System.Threading;
 
 namespace scientist_demo
 {
-    public class SmtpEmailGateway
+    class SmtpEmailGateway
     {
         public bool IsValidEmail(string emailAddres)
             => emailAddres.Contains("@");
