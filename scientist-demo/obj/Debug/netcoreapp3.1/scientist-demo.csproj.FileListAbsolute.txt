@@ -1,0 +1,13 @@
+C:\Dev\scientist\scientist-demo\bin\Debug\netcoreapp3.1\scientist-demo.exe
+C:\Dev\scientist\scientist-demo\bin\Debug\netcoreapp3.1\scientist-demo.deps.json
+C:\Dev\scientist\scientist-demo\bin\Debug\netcoreapp3.1\scientist-demo.runtimeconfig.json
+C:\Dev\scientist\scientist-demo\bin\Debug\netcoreapp3.1\scientist-demo.runtimeconfig.dev.json
+C:\Dev\scientist\scientist-demo\bin\Debug\netcoreapp3.1\scientist-demo.dll
+C:\Dev\scientist\scientist-demo\bin\Debug\netcoreapp3.1\scientist-demo.pdb
+C:\Dev\scientist\scientist-demo\obj\Debug\netcoreapp3.1\scientist-demo.csprojAssemblyReference.cache
+C:\Dev\scientist\scientist-demo\obj\Debug\netcoreapp3.1\scientist-demo.AssemblyInfoInputs.cache
+C:\Dev\scientist\scientist-demo\obj\Debug\netcoreapp3.1\scientist-demo.AssemblyInfo.cs
+C:\Dev\scientist\scientist-demo\obj\Debug\netcoreapp3.1\scientist-demo.csproj.CoreCompileInputs.cache
+C:\Dev\scientist\scientist-demo\obj\Debug\netcoreapp3.1\scientist-demo.dll
+C:\Dev\scientist\scientist-demo\obj\Debug\netcoreapp3.1\scientist-demo.pdb
+C:\Dev\scientist\scientist-demo\obj\Debug\netcoreapp3.1\scientist-demo.genruntimeconfig.cache
