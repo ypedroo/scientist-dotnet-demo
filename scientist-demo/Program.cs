@@ -1,6 +1,8 @@
 ﻿using System;
+using System.IO;
 using System.Threading;
 using GitHub;
+using Microsoft.Extensions.Configuration;
 
 namespace scientist_demo
 {
@@ -8,11 +10,20 @@ namespace scientist_demo
     {
         static void Main(string[] args)
         {
+            var builder = new ConfigurationBuilder()
+               .SetBasePath(Directory.GetCurrentDirectory())
+               .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
+
+            IConfigurationRoot configuration = builder.Build();
+
+            var connectionstrings = new ConnectionStrings();
+            configuration.GetSection("ConnectionStrings").Bind(connectionstrings);
+
             var repository = new AtendeeRepository();
             var smtpGateway = new SmtpEmailGateway();
             var cloudGateway = new CloudEmailServiceGateway();
             var alternateCloudGateway = new AlternativeCloudEmailService();
-            Scientist.ResultPublisher = new ConsolePublisher();
+            Scientist.ResultPublisher = new SqlServerPublisher(connectionstrings);
 
             var atendeesToNotify = repository.GetAll();
 
@@ -22,19 +33,11 @@ namespace scientist_demo
 
                 isValidEmail = Scientist.Science<bool>("Cloud-email-gatway", experiment =>
                 {
-                    experiment.BeforeRun(() => PreapreForExperiment(atendee));
-
                     experiment.Use(() => smtpGateway.IsValidEmail(atendee.Email));
 
-                    // Add context
                     experiment.AddContext("email address", atendee.Email);
 
-                    // Add condition to experiment
-                    //experiment.RunIf(() => atendee.FirstName == "Pedro" || atendee.FirstName == "Mateus");
-                    //experiment.Ignore((control, candidate) => atendee.FirstName == "Mateus");
-
                     experiment.Try("Cloud gateway", () => cloudGateway.ValidateEmailAddres(atendee.Email));
-                    experiment.Try("Alternative gateway", () => alternateCloudGateway.ValidateEmailAddres(atendee.Email));
                 });
 
                 if (isValidEmail)
