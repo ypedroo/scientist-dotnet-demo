@@ -17,7 +17,7 @@ namespace scientist_demo
 
             foreach (var atendee in atendeesToNotify)
             {
-                //bool isValidEmail = smtpGateway.IsValidEmail(atendee.Email));
+                //bool isValidEmail = smtpGateway.IsValidEmail(atendee.Email);
 
                 bool isValidEmail = Scientist.Science<bool>("Cloud-email-gatway", experiment =>
                 {

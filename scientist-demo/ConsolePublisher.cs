@@ -13,11 +13,14 @@ namespace scientist_demo
             Console.WriteLine($"Experiment name: '{result.ExperimentName}'");
             Console.WriteLine($"Result: '{(result.Matched ? "Control value matched candidate value" : "Control value DIDN'T matched candidate value")}'");
             Console.WriteLine($"Control Value: '{result.Control.Value}'");
+            Console.WriteLine($"Control Executiion Time: '{result.Control.Duration.TotalMilliseconds}'");
 
             foreach (var candidate in result.Candidates)
             {
                 Console.WriteLine($"Candidate name: {candidate.Name}");
                 Console.WriteLine($"Candidate value: {candidate.Value}");
+                Console.WriteLine($"Control Executiion Time: '{candidate.Duration.TotalMilliseconds}'");
+
             }
 
             Console.ForegroundColor = ConsoleColor.White;
