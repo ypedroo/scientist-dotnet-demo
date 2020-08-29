@@ -10,20 +10,22 @@ namespace scientist_demo
             var repository = new AtendeeRepository();
             var smtpGateway = new SmtpEmailGateway();
             var cloudGateway = new CloudEmailServiceGateway();
+
             Scientist.ResultPublisher = new ConsolePublisher();
 
             var atendeesToNotify = repository.GetAll();
 
             foreach (var atendee in atendeesToNotify)
             {
-                bool isValidEmail;
+                //bool isValidEmail = smtpGateway.IsValidEmail(atendee.Email));
 
-                isValidEmail = Scientist.Science<bool>("Cloud-email-gatway", experiment =>
+                bool isValidEmail = Scientist.Science<bool>("Cloud-email-gatway", experiment =>
                 {
                     experiment.Use(() => smtpGateway.IsValidEmail(atendee.Email));
 
                     experiment.Try(() => cloudGateway.ValidateEmailAddres(atendee.Email));
                 });
+
 
                 if (isValidEmail)
                 {

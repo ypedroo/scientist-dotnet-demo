@@ -20,11 +20,6 @@ namespace scientist_demo
                 Console.WriteLine($"Candidate value: {candidate.Value}");
             }
 
-            if (result.Mismatched)
-            {
-
-            }
-
             Console.ForegroundColor = ConsoleColor.White;
 
             return Task.FromResult(0);
